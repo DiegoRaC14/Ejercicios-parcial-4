@@ -6,7 +6,7 @@ int main()
 {
     int matriz[3][3];
 
-    printf("Ingrese los valores para la matriz de 3x3:\n");//Ingresar valores para la matriz
+    printf("Ingrese los valores para la matriz de 3x3:\n");
 
     for (int i = 0; i < 3; i++) 
 	{
@@ -16,24 +16,29 @@ int main()
             scanf("%d", &matriz[i][j]);
         }
     }
-
-	 for (int i = 0; i < 3; i++) 
+	printf("\n");
+	
+	
+    for (int i = 0; i < 3; i++) 
 	{
         for (int j = 0; j < 3; j++)
 		 {
-          printf("%d  ",matriz[i][j]);
+          printf("%d  ", matriz[i][j]);
         }
         printf("\n");
     }
-    
 
     if (MatrizMagica(matriz)) 
-	{
-        printf("Es una matriz magica.\n");
+	{	
+		printf("\x1b[32m");//Color verde
+        printf("La matriz es magica.\n");
+        printf("\x1b[0m");//Resetear color
     } 
 	else
 	{
-        printf("No es una matriz magica.\n");
+        printf("\x1b[32m");//Color verde
+		printf("La matriz no es magica.\n");
+		printf("\x1b[0m");//Resetear color
     }
 
     return 0;
@@ -47,59 +52,63 @@ int MatrizMagica(int matriz[3][3]) // Checar si es una matriz mágica
 	{
 	    sumaFila += matriz[0][j]; // Calcula la suma de la primera fila    
 	}
-	printf("Suma fila 1:%d\n",sumaFila);
+	printf("\nSuma fila 1: %d\n", sumaFila);
 	
 	
-	for (int i = 1; i < 3; i++) // Checar las sumas de las filas
+	for (int i = 0; i < 3; i++) // Imprime la suma de todas las filas
 	{
 	    int sumaActual = 0;
 	    for (int j = 0; j < 3; j++)
 		{
 	        sumaActual += matriz[i][j];
 	    }
+	    printf("Suma fila %d: %d\n", i + 1, sumaActual);
 	    if (sumaActual != sumaFila) 
 		{
 	        return 0; // No es una matriz mágica
 	    }
 	}
 	
-	
-	for (int j = 0; j < 3; j++) // Verifica las sumas de las columnas
+	// Imprime la suma de todas las columnas
+	for (int j = 0; j < 3; j++) 
 	{
 	    int sumaActual = 0;
 	    for (int i = 0; i < 3; i++)
 		{
 	        sumaActual += matriz[i][j];
 	    }
-	    if (sumaActual != sumaFila)
-		 {
-	        return 0; // No es una matriz mágica
-	    }
+	    printf("Suma columna %d: %d\n", j + 1, sumaActual);
 	}
 	
-	// Verifica la suma de la diagonal principal
+	// Imprime la suma de la diagonal principal
 	int sumaDiagonalPrincipal = 0;
 	for (int i = 0; i < 3; i++) 
 	{
 	    sumaDiagonalPrincipal += matriz[i][i];
 	}
+	printf("Suma diagonal principal: %d\n", sumaDiagonalPrincipal);
+	
 	if (sumaDiagonalPrincipal != sumaFila)
 	{
 	    return 0; // No es una matriz mágica
 	}
 	
-	// Verifica la suma de la diagonal secundaria
+	// Imprime la suma de la diagonal secundaria
 	int sumaDiagonalSecundaria = 0;
 	for (int i = 0; i < 3; i++) 
 	{
 	    sumaDiagonalSecundaria += matriz[i][2 - i];
 	}
+	printf("\nSuma diagonal secundaria: %d\n", sumaDiagonalSecundaria);
+
 	if (sumaDiagonalSecundaria != sumaFila)
-	 {
+	{
 	    return 0; // No es una matriz mágica
 	}
 	
 	return 1; // Es una matriz mágica
 }
+
+
 
 
