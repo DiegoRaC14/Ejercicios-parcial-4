@@ -1,6 +1,5 @@
 #include <stdio.h>
 
-
 int MatrizMagica(int matriz[3][3]); // Checar si es una matriz mágica
 
 int main() 
@@ -27,7 +26,7 @@ int main()
         printf("\n");
     }
     
-    // Verifica si es una matriz mágica e imprime el resultado
+
     if (MatrizMagica(matriz)) 
 	{
         printf("Es una matriz magica.\n");
@@ -48,10 +47,10 @@ int MatrizMagica(int matriz[3][3]) // Checar si es una matriz mágica
 	{
 	    sumaFila += matriz[0][j]; // Calcula la suma de la primera fila    
 	}
-	printf("Suma fila 1:%d",sumaFila);
+	printf("Suma fila 1:%d\n",sumaFila);
 	
-	// Verifica las sumas de las filas
-	for (int i = 1; i < 3; i++) 
+	
+	for (int i = 1; i < 3; i++) // Checar las sumas de las filas
 	{
 	    int sumaActual = 0;
 	    for (int j = 0; j < 3; j++)
@@ -64,8 +63,8 @@ int MatrizMagica(int matriz[3][3]) // Checar si es una matriz mágica
 	    }
 	}
 	
-	// Verifica las sumas de las columnas
-	for (int j = 0; j < 3; j++) 
+	
+	for (int j = 0; j < 3; j++) // Verifica las sumas de las columnas
 	{
 	    int sumaActual = 0;
 	    for (int i = 0; i < 3; i++)
